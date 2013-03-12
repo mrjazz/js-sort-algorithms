@@ -24,7 +24,7 @@ Also it include nice vsualizer that allow you track algorithm logic step by step
 
 <img src="https://raw.github.com/mrjazz/js-sort-algorithms/master/example_visualize.png"/>
 
-## Authors:
+### Authors:
 
 * Alexandr Kuchinsky
 * Alexey Voronoy
