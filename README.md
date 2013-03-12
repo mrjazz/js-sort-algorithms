@@ -22,6 +22,8 @@ This project include a few implementations of sort algorithms:
 
 Also it include nice vsualizer that allow you track algorithm logic step by step.
 
+<img src="https://raw.github.com/mrjazz/js-sort-algorithms/master/example_visualize.png"/>
+
 Authors:
 
 Alexandr Kuchinsky
