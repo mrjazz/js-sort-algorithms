@@ -18,6 +18,7 @@ This project include a few implementations of sort algorithms:
 * cocktailSort
 * quick3Sort
 * binaryTreeSort
+* pyramidSort
 
 
 Also it include nice vsualizer that allow you track algorithm logic step by step.
