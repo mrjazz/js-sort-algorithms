@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="denis/visualize.js"></script>
+    <script type="text/javascript" src="denis/main.js"></script>
+    <script type="text/javascript" src="vova/mergeSort.js"></script>
+    <script type="text/javascript" src="max/quicksort.js"></script>
+    <script type="text/javascript" src="alexey/main.js"></script>
+    <script type="text/javascript" src="sergey_f/main.js"></script>
+    <script type="text/javascript" src="alexander/heap_sort.js"></script>
+    <script type="text/javascript" src="romank/treesort.js"></script>
+    <script type="text/javascript" src="romank/timsort.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <title>Sort algorithms benchmark</title>
+</head>
+<body>
+<div id="nativeSort"></div>
+<div id="pyramidSort"></div>
+<div id="pyramidSort2"></div>
+<div id="shellSort"></div>
+<div id="mergeSort"></div>
+<div id="quickSort"></div>
+<div id="selectionSort"></div>
+<div id="combSort"></div>
+<div id="heapSort"></div>
+<div id="cocktailSort"></div>
+<div id="quick3Sort"></div>
+<div id="insertionSort"></div>
+<div id="binaryTreeSort"></div>
+<div id="timSort"></div>
+<table id="result" style="float:left">
+<tr class="headerRow"><td class="algorithmCell">Algorithm</td><td>randomData</td><td>orderedData</td><td>reversedData</td><td>mixedData</td></tr>
+</table>
+
+<canvas id="panel" width="500" height="500"></canvas>
+
+<script>
+function drawStat(id) {    
+    drawArray((new Stat()).getDump(id), "panel");
+}
+
+window.onload = function (){
+    function $e(id) {
+        return document.getElementById(id);
+    }
+
+    function genRandom(n, max) {
+        var data = [];
+        for(var i = 0; i < n; i++) {
+            data.push(Math.round(Math.random() * max));
+        }
+        return data;
+    }
+
+    function genOrdered(n) {
+        var data = [];
+        for(var i = 0; i < n; i++) {
+            data.push(i);
+        }
+        return data;
+    }
+
+    function shufle(list) {
+        return list.sort(function() { return Math.random() - 0.5});
+    }
+
+    function check(result, standard) {
+    	if(result.length != standard.length)
+           return false;
+
+    	for(var i = 0; i < result.length - 1; i++) {
+            if(result[i] != standard[i]) return false;
+        }
+        return true;
+    }
+
+    function generateTimeOutput(timeInMs) {
+        var timeInS = timeInMs/1000;
+        var result = '';
+        if (parseInt(timeInS) != 0) {
+            result = timeInS + ' <span class="badResult">Sec</span></td>';
+        } else {
+            result = timeInMs + ' <span class="goodResult">mSec</span></td>';
+        }
+        return result;
+    }
+    //sortShell(genOrdered(20).reverse());
+
+
+    var methods = {        
+        'nativeSort': sortNative,    
+
+        'pyramidSort2': sortPyramid2,    
+        'pyramidSort': sortPyramid,
+        
+        'shellSort(Sedgewick)': sortShell,
+        'ShellSort(Fibo)': shellSortFibo,
+        'ShellSort(Hibbard)': shellSortHibbard,
+        'ShellSort(Pratt)': shellSortPratt,
+        'insertionSort': insertionSort,
+        'mergeSort': mergeSort,        
+        'quickSort': quickSort,
+        'selectionSort': selectionSort,
+        'combSort': combSort,
+        'heapSort': heapSort,        
+        'cocktailSort': cocktailSort,
+        'quick3Sort': quick3Sort,
+        'binaryTreeSort': binaryTreeSort,        
+        'timSort': timSort        
+    };
+
+    var amount = 20;
+    var data = {
+        'randomData': genRandom(amount, 99),
+        'orderedData': genOrdered(amount),
+        'reversedData': genOrdered(amount).reverse(),
+        'mixedData': shufle(genOrdered(amount))
+    };
+
+    var start, result;
+    var Standard = {
+        'randomData': sortNative(data['randomData'].slice(0)),
+        'orderedData': sortNative(data['orderedData'].slice(0)),
+        'reversedData': sortNative(data['reversedData'].slice(0)),
+        'mixedData': sortNative(data['mixedData'].slice(0))
+    };    
+
+    for(var i in methods) {
+        var out = '<tr class="methodRow">';
+        out += '<td class="methodName"><b>' + i + '</b></td>';
+        for(var j in data) {
+            out += '<td><a href="#" onclick="drawStat(' + mystat.curId() + ')">';            
+            start = new Date();
+            var curData = data[j].slice(0);
+            mystat.add(curData);
+            result = methods[i](curData);        
+            out +=  generateTimeOutput(new Date() - start);
+            mystat.save();
+            //console.log(i + ' ' + j + ' ' + check(result, Standard[j]));
+        }
+        $e('result').innerHTML += out  + '</a></td></tr>';
+    }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+.result > th, td {
+    padding: 5px;
+}
+
+.badResult {
+    color: red;
+}
+
+.goodResult {
+    color: green;
+}
+
+.methodRow > td {
+    border-bottom: 1px dashed black;
+}
+
+.methodRow > .methodName {
+    text-align: right;
+    border-right: 1px solid black;
+}
+
+.headerRow > td {
+    text-align: right;
+    border-bottom: 1px solid black;
+}
+.headerRow > .algorithmCell {
+    border-right: 1px solid black;
+}
