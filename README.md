@@ -27,10 +27,10 @@ Also it include nice vsualizer that allow you track algorithm logic step by step
 
 ### Authors:
 
-* Alexandr Kuchinsky
-* Alexey Voronoy
-* Denis Sheremetov
-* Roman Kolpak
+* <a href="https://github.com/alex-kuchinskiy">Alexandr Kuchinsky</a>
+* <a href="https://github.com/voronoy">Alexey Voronoy</a>
+* <a href="https://github.com/mrjazz">Denis Sheremetov</a>
+* <a href="https://github.com/rawry">Roman Kolpak</a>
 * Sergey Fillipenko
-* Max Marushkevich
-* Vladimir Gordienko
+* <a href="https://github.com/nitrille">Max Marushkevich</a>
+* <a href="https://github.com/brightlycolor">Vladimir Gordienko</a>
