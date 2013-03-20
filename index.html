@@ -35,7 +35,7 @@
 <canvas id="panel" width="500" height="500"></canvas>
 
 <script>
-function drawStat(id) {    
+function drawStat(id) {
     drawArray((new Stat()).getDump(id), "panel");
 }
 
@@ -87,26 +87,27 @@ window.onload = function (){
     //sortShell(genOrdered(20).reverse());
 
 
-    var methods = {        
-        'nativeSort': sortNative,    
+    var methods = {
+        'nativeSort': sortNative,
 
-        'pyramidSort2': sortPyramid2,    
+        'pyramidSort2': sortPyramid2,
         'pyramidSort': sortPyramid,
-        
+
         'shellSort(Sedgewick)': sortShell,
         'ShellSort(Fibo)': shellSortFibo,
         'ShellSort(Hibbard)': shellSortHibbard,
         'ShellSort(Pratt)': shellSortPratt,
         'insertionSort': insertionSort,
-        'mergeSort': mergeSort,        
+        'mergeSort': mergeSort,
         'quickSort': quickSort,
         'selectionSort': selectionSort,
         'combSort': combSort,
-        'heapSort': heapSort,        
+        'heapSort': heapSort,
         'cocktailSort': cocktailSort,
         'quick3Sort': quick3Sort,
-        'binaryTreeSort': binaryTreeSort,        
-        'timSort': timSort        
+        'binaryTreeSort': binaryTreeSort,
+        'timSort': timSort,
+        'radixSort': radixSort
     };
 
     var amount = 20;
@@ -123,17 +124,17 @@ window.onload = function (){
         'orderedData': sortNative(data['orderedData'].slice(0)),
         'reversedData': sortNative(data['reversedData'].slice(0)),
         'mixedData': sortNative(data['mixedData'].slice(0))
-    };    
+    };
 
     for(var i in methods) {
         var out = '<tr class="methodRow">';
         out += '<td class="methodName"><b>' + i + '</b></td>';
         for(var j in data) {
-            out += '<td><a href="#" onclick="drawStat(' + mystat.curId() + ')">';            
+            out += '<td><a href="#" onclick="drawStat(' + mystat.curId() + ')">';
             start = new Date();
             var curData = data[j].slice(0);
             mystat.add(curData);
-            result = methods[i](curData);        
+            result = methods[i](curData);
             out +=  generateTimeOutput(new Date() - start);
             mystat.save();
             //console.log(i + ' ' + j + ' ' + check(result, Standard[j]));
