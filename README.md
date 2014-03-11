@@ -31,6 +31,6 @@ Also it include nice vsualizer that allow you track algorithm logic step by step
 * <a href="https://github.com/voronoy">Alexey Voronoy</a>
 * <a href="https://github.com/mrjazz">Denis Sheremetov</a>
 * <a href="https://github.com/rawry">Roman Kolpak</a>
-* Sergey Fillipenko
+* <a href="https://github.com/sergey-filipenko">Sergey Fillipenko</a>
 * <a href="https://github.com/nitrille">Max Marushkevich</a>
 * <a href="https://github.com/brightlycolor">Vladimir Gordienko</a>
